@@ -3,9 +3,29 @@ from src.json_html_parser.html_tags import *
 HTML_TAG_SEPARATOR = ''
 
 
+def parse_node(tag, content):
+    data = None
+    escape = False
+
+    if isinstance(content, list):
+        data = parse_array(content)
+
+    if isinstance(content, dict):
+        data = parse_dict(content)
+
+    if isinstance(content, str):
+        data = content
+        escape = True
+
+    if data is None:
+        raise ValueError('Неверный JSON')
+
+    return HtmlTag(tag).get_html(data, escape=escape)
+
+
 def parse_dict(node_info, in_list=False):
     elements = [
-        HtmlTag(tag).get_html(content)
+        parse_node(tag, content)
         for (tag, content)
         in node_info.items()
     ]
