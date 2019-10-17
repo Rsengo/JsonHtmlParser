@@ -10,11 +10,12 @@ class JsonToHtmlParsingTests(unittest.TestCase):
                 "div": "Hello, World 1!"
             },
             {
-                "h1": "Title #2",
-                "span": "Hello, World 2!"
-            },
+                "h3": "Title #2",
+                "div": "Hello, World 2!"
+            }
         ]
-        html = '<h3>Title #1</h3><div>Hello, World 1!</div><h1>Title #2</h1><span>Hello, World 2!</span>'
+        html = '<ul><li><h3>Title #1</h3><div>Hello, World 1!</div></li><li><h3>Title #2</h3><div>Hello, ' \
+               'World 2!</div></li></ul>'
 
         parsed = parse_json_to_html(json_data)
 
