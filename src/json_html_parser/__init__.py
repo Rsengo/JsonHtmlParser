@@ -1,1 +1,1 @@
-__all__ = ['html_tags', 'json_reader', 'parser']
+__all__ = ['json_reader', 'parser']
